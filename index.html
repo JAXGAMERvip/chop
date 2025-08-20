@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>متجر البنلات المطور</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    body { font-family: 'Tajawal', sans-serif; }
+
+    /* نافذة تكبير الصور */
+    #imgModal {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+    }
+    #imgModal img {
+      max-width: 90%;
+      max-height: 85%;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255,255,255,.5);
+      animation: zoom .3s ease;
+    }
+    #imgModal span {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+    }
+    @keyframes zoom {
+      from { transform: scale(0.7); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    /* popup التواصل */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 9998;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,.3);
+      z-index: 9999;
+      text-align: center;
+    }
+    .popup img {
+      margin: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between">
+      <h2 style="color:var(--brand-light)">متجر BLOODIX</h2>
+      <nav>
+        <a href="#products">المنتجات</a>
+        <a href="#faq">الأسئلة</a>
+       <a href="contact.html">تواصل</a>
+
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero container">
+    <div>
+      <h1>🔥 احصل على أقوى البنلات بأسعار مذهلة!</h1>
+      <p>اختَر الباقة المناسبة لك: VIP، Pro، أو حتى نسخة مجانية تجريبية.</p>
+      <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+        <a href="#products" class="btn">استعرض المنتجات</a>
+        <button class="btn" data-video>شاهد الفيديو</button>
+      </div>
+    </div>
+    <div>
+      <img src="assets/images/shot.png" alt="عرض التطبيق" style="max-width:100%;border-radius:1rem">
+    </div>
+  </section>
+
+<section id="products" class="container">
+  <h2 style="margin-bottom:1rem;color:var(--brand-light)">المنتجات | Products</h2>
+  <div class="products">
+
+    <div class="card">
+      <h3>VIP Panel – شهر كامل | Full Month</h3>
+      <img src="assets/images/vip.png" alt="VIP">
+      <p>بدون حظر، تحديث دائم، دعم مباشر<br>
+         No ban, lifetime updates, direct support</p>
+      <p><b>20$</b></p>
+      <a href="contact.html" class="btn">شراء الآن | Buy Now</a>
+    </div>
+
+    <div class="card">
+      <h3>Pro Panel – أسبوع | One Week</h3>
+      <img src="assets/images/pro.png" alt="Pro">
+      <p>سريع وآمن، مثالي للتجربة<br>
+         Fast & secure, perfect for testing</p>
+      <p><b>5$</b></p>
+      <a href="contact.html" class="btn">شراء الآن | Buy Now</a>
+    </div>
+
+    <div class="card">
+      <h3>Free Panel – 3 أيام | 3 Days Trial</h3>
+      <img src="assets/images/free.png" alt="Free">
+      <p>تجربة محدودة قبل الشراء<br>
+         Limited trial before purchase</p>
+      <p><b>مجاناً | Free</b></p>
+      <a href="free-ended.html" class="btn">تحميل | Download</a>
+    </div>
+
+    <div class="card">
+      <h3>Panel – Android FF/FFMAX</h3>
+      <img src="assets/images/android.png" alt="Android">
+      <p>لن تجده معروضًا في أي مكان آخر<br>
+         Exclusive – not available anywhere else</p>
+      <p style="color:red;font-weight:bold">⚠️ ضروري امتلاك رووت | Root Required</p>
+      <p><b>8$</b></p>
+      <a href="contact.html" class="btn">شراء الآن | Buy Now</a>
+    </div>
+
+  </div>
+</section>
+
+  <section id="faq" class="container">
+    <h2 style="margin-bottom:1rem;color:var(--brand-light)">الأسئلة الشائعة</h2>
+    <details class="card"><summary>هل البنلات آمنة من الباند؟</summary><p>نعم، يتم تحديثها باستمرار لتفادي الحظر.</p></details>
+    <details class="card"><summary>هل يمكنني التجربة مجاناً؟</summary><p>نعم، لدينا نسخة تجريبية مجانية لمدة 3 أيام.</p></details>
+    <details class="card"><summary>كيف أحصل على الدعم؟</summary><p>يمكنك التواصل معنا عبر واتساب أو تيليجرام أو ديسكورد.</p></details>
+  </section>
+
+  <footer id="contact">
+    <p>© 2025 متجر BLOODIX — جميع الحقوق محفوظة</p>
+    <div style="margin-top:.5rem">
+      <a href="https://discord.gg/CrPpAuHmXT" target="_blank" style="margin:0 .5rem">Discord</a>
+      <a href="https://wa.me/+212722152363" target="_blank" style="margin:0 .5rem">WhatsApp</a>
+      <a href="https://t.me/jawadviip" target="_blank" style="margin:0 .5rem">Telegram</a>
+    </div>
+  </footer>
+
+  <!-- modal فيديو -->
+  <div id="videoModal" class="modal"><iframe src="" allow="autoplay;encrypted-media" allowfullscreen></iframe></div>
+
+  <!-- modal صور -->
+  <div id="imgModal">
+    <span id="closeImg">&times;</span>
+    <img id="modalImg" src="">
+  </div>
+
+  <!-- نافذة التواصل -->
+  <div class="overlay" id="overlay" onclick="closePopup()"></div>
+  <div class="popup" id="popup" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+    <a href="https://discord.gg/CrPpAuHmXT" target="_blank" title="Discord" aria-label="رابط ديسكورد">
+      <img src="https://img.icons8.com/?size=512&id=M725CLW4L7wE&format=png" alt="Discord" width="50" />
+    </a>
+    <a href="https://wa.me/+212640709938" target="_blank" title="WhatsApp" aria-label="رابط واتساب">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" width="50" />
+    </a>
+    <a href="https://t.me/jawadviip" target="_blank" title="Telegram" aria-label="رابط تيليجرام">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" width="50" />
+    </a>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // منع حفظ الصور (كليك يمين + سحب)
+    document.addEventListener("contextmenu", e => {
+      if(e.target.tagName === "IMG") e.preventDefault();
+    });
+    document.querySelectorAll("img").forEach(img=> img.setAttribute("draggable","false"));
+
+    // تكبير الصور
+    const modal = document.getElementById("imgModal");
+    const modalImg = document.getElementById("modalImg");
+    const closeImg = document.getElementById("closeImg");
+
+    document.querySelectorAll("img").forEach(img=>{
+      img.addEventListener("click", ()=>{
+        modal.style.display = "flex";
+        modalImg.src = img.src;
+      });
+    });
+    closeImg.onclick = ()=> modal.style.display = "none";
+    modal.onclick = e => { if(e.target === modal) modal.style.display = "none"; }
+
+    // منع الاختصارات
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'F12' || 
+         (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || 
+         (e.ctrlKey && e.key.toLowerCase() === 'u')) {
+        e.preventDefault();
+      }
+    });
+    document.addEventListener('contextmenu', e => e.preventDefault());
+
+    // ===== نافذة التواصل =====
+    function openPopup() {
+      document.getElementById("overlay").style.display = "block";
+      document.getElementById("popup").style.display = "block";
+    }
+    function closePopup() {
+      document.getElementById("overlay").style.display = "none";
+      document.getElementById("popup").style.display = "none";
+    }
+
+    // ربط popup بأزرار شراء فقط
+    document.querySelectorAll(".btn").forEach(btn => {
+      if (btn.textContent.includes("شراء")) {
+        btn.addEventListener("click", e => {
+          e.preventDefault();
+          openPopup();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

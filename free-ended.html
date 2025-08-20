@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الفترة المجانية انتهت</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #2c003e, #55008a);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      direction: rtl;
+      color: #fff;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .message-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid #9b30ff;
+      padding: 40px 25px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 30px #b76bff;
+      max-width: 90%;
+      animation: popIn 0.8s ease;
+      z-index: 10;
+      position: relative;
+    }
+
+    .message-box h1 {
+      font-size: 30px;
+      color: #f0c0ff;
+      margin-bottom: 20px;
+    }
+
+    .message-box p {
+      font-size: 18px;
+      color: #ddd;
+    }
+
+    @keyframes popIn {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .message-box {
+        padding: 25px 15px;
+      }
+      .message-box h1 {
+        font-size: 24px;
+      }
+      .message-box p {
+        font-size: 16px;
+      }
+    }
+
+    /* المطر */
+    .rain {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .drop {
+      position: absolute;
+      bottom: 100%;
+      width: 2px;
+      background: rgba(255, 255, 255, 0.25);
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+      }
+    }
+
+    /* تناثر الماء */
+    .splash {
+      position: absolute;
+      bottom: 0;
+      width: 4px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      animation: splashAnim 0.6s linear forwards;
+    }
+    @keyframes splashAnim {
+      to {
+        transform: scale(2) translateY(10px);
+        opacity: 0;
+      }
+    }
+
+    /* البرق */
+    .lightning {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      opacity: 0;
+      z-index: 5;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- المطر -->
+  <div class="rain" id="rain"></div>
+  <!-- وميض البرق -->
+  <div class="lightning" id="lightning"></div>
+
+  <!-- رسالة انتهاء الفترة -->
+  <div class="message-box">
+    <h1>The Free Period Has Ended ⛔</h1>
+    <p>🕒 Please wait a few days to get a new free panel.<br>Thank you for your understanding! 💜</p>
+    <h1>لقد انتهت الفترة المجانية ⛔</h1>
+    <p>🕒 الرجاء الانتظار بضع أيام للحصول على لوحة مجانية جديدة.<br>شكراً لتفهمك! 💜</p>
+  </div>
+
+  <!-- صوت البرق والرعد الحقيقي -->
+  <audio id="thunderSound" src="https://raw.githubusercontent.com/JAXGAMERvip/Chams/main/e8JrfX-Lt3Q%20(mp3cut.net).mp3" preload="auto"></audio>
+
+  <script>
+    // منع أدوات المطور والزر الأيمن
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || (e.ctrlKey && e.key.toLowerCase() === 'u')) {
+        e.preventDefault();
+      }
+    });
+
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+
+    document.querySelectorAll('img').forEach(img => {
+      img.addEventListener('dragstart', e => e.preventDefault());
+      img.addEventListener('contextmenu', e => e.preventDefault());
+    });
+
+    // كود المطر
+    const rainContainer = document.getElementById('rain');
+    const drops = 150;
+
+    for (let i = 0; i < drops; i++) {
+      const drop = document.createElement('div');
+      drop.classList.add('drop');
+
+      // خصائص عشوائية
+      const height = 10 + Math.random() * 20;
+      drop.style.height = height + 'px';
+      drop.style.left = Math.random() * 100 + 'vw';
+      drop.style.animationDuration = (0.4 + Math.random() * 1.2) + 's';
+      drop.style.animationDelay = Math.random() * 5 + 's';
+
+      // تناثر الماء
+      drop.addEventListener('animationiteration', () => {
+        const splash = document.createElement('div');
+        splash.classList.add('splash');
+        splash.style.left = drop.style.left;
+        rainContainer.appendChild(splash);
+        setTimeout(() => splash.remove(), 600);
+      });
+
+      rainContainer.appendChild(drop);
+    }
+
+    // البرق والرعد
+    const lightning = document.getElementById('lightning');
+    const thunderSound = document.getElementById('thunderSound');
+
+    function flashLightning() {
+      // وميض سريع
+      lightning.style.opacity = 1;
+      setTimeout(() => lightning.style.opacity = 0, 80);
+      setTimeout(() => lightning.style.opacity = 1, 160);
+      setTimeout(() => lightning.style.opacity = 0, 240);
+
+      // صوت متزامن مع الوميض
+      thunderSound.currentTime = 0;
+      thunderSound.play();
+    }
+
+    // تكرار البرق بشكل متقارب
+    setInterval(() => {
+      if (Math.random() < 0.8) { // 60% احتمال حدوث برق
+        flashLightning();
+      }
+    }, 3000);
+  </script>
+
+</body>
+</html>
