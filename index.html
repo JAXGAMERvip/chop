@@ -59,7 +59,7 @@
       background: #fff;
       padding: 20px;
       border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,.3);
+      box-shadow: 0 0 20px rgba(222, 7, 7, 0.3);
       z-index: 9999;
       text-align: center;
     }
@@ -70,17 +70,26 @@
   </style>
 </head>
 <body>
-  <header>
-    <div class="container" style="display:flex;align-items:center;justify-content:space-between">
-      <h2 style="color:var(--brand-light)">متجر BLOODIX</h2>
-      <nav>
-        <a href="#products">المنتجات</a>
-        <a href="#faq">الأسئلة</a>
-       <a href="contact.html">تواصل</a>
+<header style="background:#111; padding:12px 0; position:sticky; top:0; z-index:999;">
+  <div class="container" 
+       style="max-width:1200px; margin:auto; display:flex; align-items:center; justify-content:space-between; padding:0 20px;">
+       
+    <h2 style="color:#e50914; margin:0;">متجر BLOODIX</h2>
+    
+    <nav style="display:flex; gap:20px;">
+      <a href="#products" style="color:white; text-decoration:none; transition:0.3s;">المنتجات</a>
+      <a href="#faq" style="color:white; text-decoration:none; transition:0.3s;">الأسئلة</a>
+      <a href="contact.html" style="color:white; text-decoration:none; transition:0.3s;">تواصل</a>
+    </nav>
+  </div>
+</header>
 
-      </nav>
-    </div>
-  </header>
+<style>
+  header nav a:hover {
+    color: #e50914; /* أحمر عند المرور */
+  }
+</style>
+
 
   <section class="hero container">
     <div>

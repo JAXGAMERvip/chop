@@ -69,20 +69,50 @@
 <body>
   <div class="contact-box">
     <h2>📩 تواصل معنا | Contact Us</h2>
-    <form id="contact-form" action="https://formspree.io/f/meozbnjg" method="POST">
-      <label>الاسم الكامل | Full Name:
-        <input type="text" name="name" placeholder="أدخل اسمك / Enter your name" required>
-      </label>
-      <label>البريد الإلكتروني | Email:
-        <input type="email" name="email" placeholder="example@email.com" required>
-      </label>
-      <label>رسالتك | Message:
-        <textarea name="message" rows="5" placeholder="اكتب رسالتك هنا / Write your message..." required></textarea>
-      </label>
-      <button type="submit">إرسال | Send</button>
+   <form id="contact-form" action="https://formspree.io/f/meozbnjg" method="POST">
+  <label>الاسم الكامل | Full Name:
+    <input type="text" name="name" placeholder="أدخل اسمك / Enter your name" required>
+  </label>
+  <label>البريد الإلكتروني | Email:
+    <input type="email" name="email" placeholder="example@email.com" required>
+  </label>
+  <label>رسالتك | Message:
+    <textarea name="message" placeholder="اكتب رسالتك هنا / Write your message..." required></textarea>
+       </label>
+    <button type="submit">إرسال | Send</button>
     </form>
     <div id="status" class="status"></div>
   </div>
+
+
+<style>
+  #contact-form {
+    max-width: 500px;       /* حجم ثابت للفورم */
+    margin: auto;           /* وسط الصفحة */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  #contact-form input,
+  #contact-form textarea {
+    width: 100%;            /* عرض كامل للفورم */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box; /* مهم عشان padding ما يكسر العرض */
+  }
+
+  #contact-form textarea {
+    height: 200px;          /* ارتفاع ثابت للرسالة */
+    resize: none;           /* منع تكبير/تصغير */
+  }
+
+</style>
+
+    
+
 
   <script>
     const form = document.getElementById('contact-form');
